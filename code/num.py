@@ -20,13 +20,12 @@ class Num(Sym):
   def nums(self):
     if not self.isSorted: 
       dict(sorted(self._has.items(), key=lambda item: item[1]))
-      # self._has.sort()
       self.isSorted = True
     return self._has
     
   # v is a number -> value like key, value
   def add(self, v, the):
-    print (the)
+    pos = 0
     if v!="?":
       self.n = self.n +1
       self.lo = min(v, self.lo)
@@ -49,13 +48,6 @@ class Num(Sym):
 
   def mid(self):
     return per(self.nums(),.5)
-
-
-
-
-
-if __name__=="__main__":
-  num = Num()
 
 
 
