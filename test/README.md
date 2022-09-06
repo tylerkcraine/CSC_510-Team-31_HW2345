@@ -17,10 +17,10 @@ test_example.py (always name “test_something” or the function won’t pick i
 import test_type
 
 class TestExample(test_type.TestType): # make sure it's TestSomething formatting is important
-	def test_exampleone:
+	def test_exampleone(self):
 		# passing test
 		assert True # make sure to use assert statement because it works off the AssertionError
-	def test_exampletwo
+	def test_exampletwo(self):
 		#falling test
 		assert False
 ```
@@ -28,3 +28,7 @@ class TestExample(test_type.TestType): # make sure it's TestSomething formatting
 ## Running Testing:
 
 To run tests just run the test_runner.py file in the test folder
+
+## Note for Pycharm:
+If you are using PyCharm with this framework, you will have to switch the unittest option for testing in your project settings.
+To do this press (Ctrl + Alt + S). The setting will be under Tools > Python Integrated Tools. Change "default test runner" to unittest using the dropdown.
