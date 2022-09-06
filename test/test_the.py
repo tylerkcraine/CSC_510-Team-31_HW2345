@@ -1,8 +1,9 @@
 from args import The
 from print import oo
+import test_type
 
 
-class TestThe():
+class TestThe(test_type.TestType):
   def test_the(self):
     self.params = The()
 
