@@ -9,6 +9,7 @@ I made this in response to the fact that we couldn’t use pytest for our unit t
 You can import things from the code_folder ( renamed because of some clashing namespaces ) as you normally would. Ignore the auto completion complaining its taken care of in the test_runner file. 
 
 ### General Test Anatomy:
+All of your tests must be contained in the test folder.
 
 test_example.py (always name “test_something” or the function won’t pick it up)
 
