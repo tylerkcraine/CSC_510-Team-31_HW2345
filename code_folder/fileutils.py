@@ -2,7 +2,6 @@ import args
 
 
 def read_file(argus: args.The) -> str:
-    print("butts")
     file_name = argus.the["f"]
     buffer_string = ""
     with open(file_name, "r") as csv_file:

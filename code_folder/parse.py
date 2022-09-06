@@ -10,7 +10,7 @@ def parser(data):
     pos = data.find('\n')
     col_header = data[0:pos].split(",")
 
-    col_header_list = [ [] for l in range(len(col_header)) ]
+    col_header_list = [[] for l in range(len(col_header))]
 
     # Extracting data
     data_split = data.split("\n")
