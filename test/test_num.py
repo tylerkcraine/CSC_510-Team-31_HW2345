@@ -1,8 +1,9 @@
-from num import Num 
+from num import Num
 from args import The
 from print import oo
+import test_type
 
-class TestNum():
+class TestNum(test_type.TestType):
     def test_num(self):
         self.num_test = Num()
         self.test_the = The()
@@ -11,7 +12,7 @@ class TestNum():
         median, st_dev = self.num_test.mid(), self.num_test.div()
 
         oo({"mid": median, "div": st_dev})
-        assert median == 4 and 2.32<=st_dev and st_dev<=2.33
+        assert median == 4 and 2.32 <= st_dev and st_dev <= 2.33
 
     def test_bignum(self):
         self.num_test = Num()
@@ -21,7 +22,9 @@ class TestNum():
             self.num_test.add(i,self.test_the.the)
             
         oo(self.num_test.nums())
-        return 32 == len(self.num_test._has)
+        assert 32 == len(self.num_test._has)
+
+
 
 
 
