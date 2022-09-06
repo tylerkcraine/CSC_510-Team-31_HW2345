@@ -18,9 +18,20 @@ def main():
         thing = importlib.import_module(module)
         class_name = module.replace("_", " ").title().replace(" ", "")
         classes.append(getattr(thing, class_name))
+
+    # Running the tests and recording results
+    failures = 0
+    successes = 0
     for i_class in classes:
         thing = i_class()
-        thing.run_test()
+        success, failure = thing.run_test()
+        failures += failure
+        successes += success
+
+    print("Ran a total of {} tests\033[92m {} successe(s)\033[00m and\033[91m {} failure(s)\033[00m".format(
+        successes + failures, successes, failures))
+
+    return failures
 
 
 if __name__ == '__main__':
