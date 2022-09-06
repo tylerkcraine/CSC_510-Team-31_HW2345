@@ -3,10 +3,11 @@ import os
 import sys
 # let's test modules import from the code_folder
 sys.path.insert(1, "../code_folder")
+sys.path.insert(1, "code_folder")
 
 
 def main():
-    files = os.listdir()
+    files = os.listdir(os.path.dirname(os.path.realpath(__file__)))
     modules = []
     # Grabbing all the test files names
     for i in files:
