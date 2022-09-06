@@ -13,10 +13,18 @@ class TestNum():
         oo({"mid": median, "div": st_dev})
         assert median == 4 and 2.32<=st_dev and st_dev<=2.33
 
+    def test_bignum(self):
+        self.num_test = Num()
+        self.test_the = The()
+        self.test_the.nums = 32
+        for i in range(1,1001):
+            self.num_test.add(i,self.test_the.the)
+            
+        oo(self.num_test.nums())
+        return 32 == len(self.num_test._has)
 
-if __name__ =="__main__":
-    t= TestNum()
-    t.test_num()
+
+
 
 
 
