@@ -5,7 +5,7 @@ class The:
     self.the = {
       "e": "nothing",
       "d": False,
-      "f": "../test/sample.csv",
+      "f": "../data/sample.csv",
       "h": False,
       "n": 512,
       "s": 10019,

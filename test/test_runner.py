@@ -1,9 +1,9 @@
 import importlib
 import os
 import sys
-# let's test modules import from the code_folder
-sys.path.insert(1, "../code_folder")
-sys.path.insert(1, "code_folder")
+# let's test modules import from the src folder
+sys.path.insert(1, "../src")
+sys.path.insert(1, "src")
 
 
 def main():
@@ -30,7 +30,7 @@ def main():
         failures += failure
         successes += success
 
-    print("Ran a total of {} tests\033[92m {} successe(s)\033[00m and\033[91m {} failure(s)\033[00m".format(
+    print("Ran a total of {} tests\033[92m {} success(es)\033[00m and\033[91m {} failure(s)\033[00m".format(
         successes + failures, successes, failures))
 
     return failures
