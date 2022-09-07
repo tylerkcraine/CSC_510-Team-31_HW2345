@@ -1,8 +1,8 @@
-import copy 
+from utils import copy
 
 
 class Row:
   def __init__(self, t):
     self.cell = t
-    self.cooked = copy.deepcopy(t)
+    self.cooked = copy(t)
     self.isEvaled = False
