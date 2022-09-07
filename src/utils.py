@@ -1,6 +1,7 @@
 # all util functions
 
 import math
+import re
 
 
 def copy(t):
@@ -21,6 +22,23 @@ def per(t, p):
 def rnd(x, places):
     mult = 10 ** (places or 2)
     return math.floor(x * mult + 0.5) / mult
+
+
+def coerce(s: str):
+    def fun(sl:str):
+        if sl.strip().lower() == "true":
+            return True
+        if sl.strip().lower() == "false":
+            return False
+        return sl
+    strToCheck = s.strip()
+    if strToCheck.isnumeric():
+        return int(strToCheck)
+    else:
+        try:
+            return float(strToCheck)
+        except ValueError:
+            return fun(re.match("\s*(.*)\s*", strToCheck).string)
 
 
 if __name__ == "__main__":
