@@ -23,4 +23,4 @@ class TestNum(test_type.TestType):
             self.num_test.add(i, self.test_the.the)
 
         oo(self.num_test.nums())
-        return 32 == len(self.num_test._has)
+        assert 32 == len(self.num_test._has)
