@@ -11,7 +11,7 @@ class Num(Sym):
     self.n = 0
     self.at = c or 0
     self.name = s or ""
-    self._has = {}
+    self._has = []
     self.lo = sys.maxsize
     self.hi = -sys.maxsize
     self.isSorted = True
@@ -19,27 +19,25 @@ class Num(Sym):
 
   def nums(self):
     if not self.isSorted: 
-      dict(sorted(self._has.items(), key=lambda item: item[1]))
+      self._has.sort()
       self.isSorted = True
     return self._has
     
   # v is a number -> value like key, value
   def add(self, v, the):
-    pos = 0
     if v!="?":
       self.n = self.n +1
       self.lo = min(v, self.lo)
-      self.hi = max(v,self.hi)
+      self.hi = max(v, self.hi)
 
-      if len(self._has) < the["n"]/self.n:
-        pos = 1 + len(self._has)
+      if len(self._has) < the["n"]:
+        self.isSorted = False
+        self._has.append(float(v))
 
       elif random.random() < the["n"]/self.n:
         # generate random int b/w 1, len of _has. As mentioned in csv.luna
-        pos = random.randint(1, len(self._has))
-
-      if pos:
         self.isSorted = False
+        pos = random.randint(0, len(self._has)-1)        
         self._has[pos] = float(v)
   
   def div(self):
