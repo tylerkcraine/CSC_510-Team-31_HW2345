@@ -1,9 +1,9 @@
 {
     "python.analysis.extraPaths": [
-        "./code"
+        "./src"
     ],
     "python.testing.pytestArgs": [
-        "code"
+        "src"
     ],
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true,
