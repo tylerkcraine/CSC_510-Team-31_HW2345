@@ -1,7 +1,9 @@
 from sym import Sym
 from print import oo
+import test_type
 
-class TestSym():
+
+class TestSym(test_type.TestType):
     def test_sym(self):
         self.sym_test = Sym(None, None)
 
