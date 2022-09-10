@@ -1,30 +1,25 @@
-# import re
-# def reader_file(file_name):
-#     with open(file_name, "r") as csv_file:
-#         file_lines = csv_file.readlines()
-#     for i in file_lines:
-#         a = i.split(the.seperator)
-#         for l in a:
+from args import The
+from constants import BIG_S_OPTION
+from fileutils import read_file
+from parse import parser
+from print import oo
+import test_type
 
 
-#     #     buffer_string = buffer_string + i
-#     # return buffer_string
 
-# a = reader_file("data/auto93.csv")
-# data = a.split("")
+class TestCsv(test_type.TestType):
+    def test_csv(self):
+        self.test_the = The()
+        n = 0
 
-def test_csv(the, n):
-    list = []
-    n = 0
-     with open(the, "r") as csv_file:
-        file_lines = csv_file.readlines()
-        for i in file_lines:
-        # a = i.split(the.seperator)
-    match = re.search(data, the.seperator)
-    list.append(match)
-    for row in list: 
-        n = n+1
-        if n > 10:
-            return
-        else:
-            oo(row)
+        def inner_fun(row):
+            nonlocal n
+            n = n + 1
+            if n <= 10:
+                oo(row) 
+        
+        parser(read_file(self.test_the), inner_fun, self.test_the.the[BIG_S_OPTION] )
+        assert True
+
+
+        
