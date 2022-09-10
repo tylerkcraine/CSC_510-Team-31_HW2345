@@ -1,33 +1,45 @@
 import sys
+import re
+from constants import *
+from print import oo
+from utils import coerce
+
+
+def populate_coerce(t: dict, m: re.Match):
+    t[m.group(1)] = coerce(m.group(2))
+
 
 class The:
-  def __init__(self):
-    self.the = {
-      "e": "nothing",
-      "d": False,
-      "f": "../data/sample.csv",
-      "h": False,
-      "n": 512,
-      "s": 10019,
-      "S": ","
-    }
-    if len(sys.argv) > 1:
-      param = sys.argv[1]
-      if param == "-e":
-          self.the["e"] = sys.argv[2]
-      elif param == "-d":
-          self.the["d"] = sys.argv[2]
-      elif param == "-f":
-          self.the["f"] = sys.argv[2]
-      elif param == "-h":
-          self.the["h"] = sys.argv[2]
-      elif param == "-n":
-          self.the["n"] = 512
-          if len(sys.argv) > 2:
-              self.the["n"] = sys.argv[2]
-      elif param == "-s":
-          self.the["s"] = 10019
-      elif param == "-S":
-          self.the["S"] = ","
-          if len(sys.argv) > 2:
-              self.the["S"] = sys.argv[2]
+    def __init__(self):
+        self.the = {}
+
+        re.sub(
+            "\n [-][\S]+[\s]+[-][-]([\S]+)[^\n]+=([\S]+)",
+            lambda match: populate_coerce(self.the, match),
+            HELP_STRING,
+        )
+
+        if len(sys.argv) > 1:
+            csv_args = {}
+            for i in range(1, len(sys.argv), 2):
+                if i + 1 < len(sys.argv):
+                    csv_args[sys.argv[i]] = sys.argv[i + 1]
+                else:
+                    csv_args[sys.argv[i]] = True
+                for slot, v in self.the.items():
+                    v = str(v)
+                    for k, x in csv_args.items():
+                        if (k == "-" + slot[0:1]) or (k == "--" + slot):
+                            v = (
+                                "True"
+                                if v == "False"
+                                else "False"
+                                if v == "True"
+                                else x
+                            )
+                    self.the[slot] = coerce(v)
+
+
+if __name__ == "__main__":
+    testthe = The()
+    oo(testthe.the)
