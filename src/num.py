@@ -24,17 +24,17 @@ class Num(Sym):
     return self._has
     
   # v is a number -> value like key, value
-  def add(self, v, the):
+  def add(self, v, nums):
     if v!="?":
       self.n = self.n +1
       self.lo = min(v, self.lo)
       self.hi = max(v, self.hi)
 
-      if len(self._has) < the["n"]:
+      if len(self._has) < nums:
         self.isSorted = False
         self._has.append(float(v))
 
-      elif random.random() < the["n"]/self.n:
+      elif random.random() < nums/self.n:
         # generate random int b/w 1, len of _has. As mentioned in csv.luna
         self.isSorted = False
         pos = random.randint(0, len(self._has)-1)        
