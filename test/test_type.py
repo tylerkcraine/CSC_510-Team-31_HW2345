@@ -1,3 +1,5 @@
+import traceback
+
 class TestType(object):
     def run_test(self):
         failures = 0
@@ -14,7 +16,8 @@ class TestType(object):
                 test_thing()
                 print("\033[92m {}\033[00m" .format("SUCCESS!!"))
                 successes += 1
-            except:
+            except Exception as e:
+                traceback.print_exc()
                 print("\033[91m {}\033[00m" .format("FAILED"))
                 failures += 1
             print()

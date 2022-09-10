@@ -3,32 +3,34 @@ from row import Row
 from parse import parser
 from utils import rnd
 
-def csv():
-    return None
+# def csv():
+#     return None
 
-class Data:
-    def __init__(self,src,cols,rows):
-        return 
+class Data: 
+    # pass the
 
-    def new(self,src):
+    def __init__(self,src,separator):
         self.cols = None
         self.rows = []
         if type(src) == str:
-            # parser dummy is csv, needs to be changed
-            csv(src, self.function)
+            # to be changed?
+            parser(src, self.function,separator)
         else:
             for row in (src or []):
                 self.add(row)
 
     def function(self,row):
-        self.add(row)
+        print ("row",row)
+        # self.add(row)
+        self.add([[i,temp] for i,temp in enumerate(row)])
     
     def add(self,xs):
         if not self.cols:
+            print ("xs:",xs)
             self.cols = Cols(xs)
         else:
             # cell to cells in row.py
-            row = self.rows.append(xs.cells and xs or Row(xs))
+            row = self.rows.append(xs.cell and xs or Row(xs))
             for todo in [self.cols.x, self.cols.y]:
                 for col in todo:
                     col.add(row.cells[col.at])

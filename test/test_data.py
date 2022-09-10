@@ -1,16 +1,21 @@
 import test_type
 from data import Data
 from print import oo,o
+from args import The
+from constants import BIG_S_OPTION
+from fileutils import read_file
 
 class TestData(test_type.TestType):
     def test_data(self):
-        d = Data("../data/auto93.csv")
+        temp_the = The()
+        d = Data(read_file(temp_the),temp_the.the[BIG_S_OPTION])
         for col in d.cols.y:
             oo(col)
         return True
 
     def test_stats(self):
-        data = Data("../data/auto93.csv")
+        temp_the = The()
+        data = Data(read_file(temp_the),temp_the.the[BIG_S_OPTION])
 
         def div(col):
             return col.div()
