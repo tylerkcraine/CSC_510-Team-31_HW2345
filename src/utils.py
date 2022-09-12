@@ -38,7 +38,7 @@ def coerce(s: str):
         return int(strToCheck)
     else:
         try:
-             return float(strToCheck)
+            return float(strToCheck)
         except ValueError:
             return fun(re.match("\s*(.*)\s*", strToCheck).string)
 

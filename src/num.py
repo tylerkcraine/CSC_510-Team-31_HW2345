@@ -1,5 +1,7 @@
 import sys
-import math, random
+import random
+from constants import N_OPTION
+from print import o
 
 from sym import Sym
 from utils import per
@@ -16,6 +18,10 @@ class Num(Sym):
     self.hi = -sys.maxsize
     self.isSorted = True
     self.w = -1 if (s or "").find("$") == -1 else 1
+  
+  def __repr__(self):
+    return o({"at": self.at, "hi": self.hi, "isSorted": self.isSorted, "lo": self.lo, "n": self.n,
+    "name": self.name, "w": self.w})
 
   def nums(self):
     if not self.isSorted: 
@@ -24,7 +30,7 @@ class Num(Sym):
     return self._has
     
   # v is a number -> value like key, value
-  def add(self, v, nums):
+  def add(self, v, nums, rand: random.Random):
     if v!="?":
       self.n = self.n +1
       self.lo = min(v, self.lo)
@@ -34,10 +40,10 @@ class Num(Sym):
         self.isSorted = False
         self._has.append(float(v))
 
-      elif random.random() < nums/self.n:
+      elif rand.random() < nums/self.n:
         # generate random int b/w 1, len of _has. As mentioned in csv.luna
         self.isSorted = False
-        pos = random.randint(0, len(self._has)-1)        
+        pos = rand.randint(0, len(self._has)-1)        
         self._has[pos] = float(v)
   
   def div(self):
