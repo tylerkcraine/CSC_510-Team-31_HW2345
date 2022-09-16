@@ -1,4 +1,5 @@
 # CSC 510 Team 31 - HW 2, 3, 4 & 5
+[![DOI](https://zenodo.org/badge/530464314.svg)](https://zenodo.org/badge/latestdoi/530464314)
 
 This repo serves as a rewrite of Dr. Tim Menzies' [csv.lua](https://github.com/timm/lua/blob/main/src/csv.lua) implementation into Python. Apart from academic purposes, the goal is to showcase implementing a test frameworks from scratch, legacy refactorization, and learning more the nuances of LUA as it's translated to (roughly equivalent) Python code.
 
