@@ -1,4 +1,5 @@
 import args
+import coverage
 from constants import H_OPTION, HELP_STRING
 from example import Example
 
