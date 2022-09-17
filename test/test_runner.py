@@ -1,10 +1,9 @@
-from args import The
-from example import Example
 import sys
 # let's test modules import from the src folder
 sys.path.insert(1, "../src")
 sys.path.insert(1, "src")
-
+from args import The
+from example import Example
 
 def main():
     "Not fully working right now... will fix during HW4 so that it can be integrated into GitHub actions"
